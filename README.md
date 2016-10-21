@@ -2,7 +2,10 @@
 
 Here we showcase some data visualizations on South Asian countries. 
 
-First we start with a visualization inspired by Hans Rosling using googleVis package in R. 
+First we start with a visualization inspired by Hans Rosling using googleVis package in R. If you just want to checkout the
+motion chart then click [here](https://rfaridi.github.io/dataviz-south-asia/sa.html).
+
+You can have the detailed description of building the visualiztion [here](https://rfaridi.github.io/dataviz-south-asia/south_asia.html)
 
 
 
