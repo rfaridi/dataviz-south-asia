@@ -1,0 +1,63 @@
+---
+title: "Dataviz on South Asia"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+We are going to use WDI package
+
+```{r setOptions, message=FALSE}
+library(WDI)
+library(googleVis)
+op <- options(gvis.plot.tag='chart')
+```
+
+Let's set the indicator names and corresponding variable names.
+
+```{r}
+inds <- c('SP.DYN.TFRT.IN','SP.DYN.LE00.IN', 'SP.POP.TOTL',
+'NY.GDP.PCAP.CD', 'SE.ADT.1524.LT.FE.ZS', 'SH.DYN.MORT')
+indnams <- c("fertility.rate", "life.expectancy", "population",
+"GDP.per.capita.Current.USD", "15.to.25.yr.female.literacy","Mortality Rate")
+```
+
+Now let's get the data
+
+```{r}
+wdiSA <- WDI(country=c("BD","IN","PK","LK"), 
+              indicator=inds,
+              start=1972, 
+              end=format(Sys.Date(), "%Y"), 
+             extra=FALSE)
+```
+
+
+```{r}
+colnum <- match(inds, names(wdiSA))
+names(wdiSA)[colnum] <- indnams
+```
+
+
+```{r}
+save(wdiSA,file="./RDATA/wdiSA.RData")
+
+```
+
+
+# Now time for the motion chart
+
+```{r, results='asis',tidy=FALSE}
+M <- gvisMotionChart(wdiSA,
+                      idvar="country", timevar="year",
+                      xvar="life.expectancy", yvar="fertility.rate",
+                      colorvar="iso2c", sizevar="population",
+                      options=list(width=640, height=420))
+## Display the chart in the browser
+plot(M)
+```
+
+
+
