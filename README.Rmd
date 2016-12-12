@@ -12,6 +12,6 @@ motion chart then click [here](https://rfaridi.github.io/dataviz-south-asia/sa.h
 
 You can have the detailed description of building the visualiztion [here](https://rfaridi.github.io/dataviz-south-asia/south_asia.html)
 
-
+Happy visualizing!
 
 
